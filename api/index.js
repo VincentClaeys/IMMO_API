@@ -16,10 +16,10 @@ const port = 3002;
 const { Pool } = pg;
 const pool = new Pool({
   user: "postgres",
-  database: "IMMO",
-  password: "Zelzate2002",
-  port: "5432",
-  host: "127.0.0.1",
+  database: "railway",
+  password: "jsNudrA2mhmqUYJCQgQr",
+  port: "5592",
+  host: "containers-us-west-180.railway.app",
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
 });
