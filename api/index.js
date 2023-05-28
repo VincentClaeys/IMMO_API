@@ -3,9 +3,10 @@ import pg from "pg";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import cors from "cors";
+
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
+import { registerMiddleware } from "./middleware/index.js";
 
 // CREATE THE EXPRESS APP
 const app = express();
@@ -91,14 +92,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // CORS MIDDLEWARE
-app.use(
-  cors({
-    origin: "https://immoapp-production.up.railway.app/",
-    methods: "GET, POST, PUT, DELETE, PATCH",
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+registerMiddleware(app);
 
 // ALL THE ROUTES FOR THE LOGIN AND REGISTER
 

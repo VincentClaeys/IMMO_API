@@ -8,7 +8,7 @@ const registerMiddleware = (app) => {
   if (process.env.ENV === "production") {
 
     const corsOptions = {
-      origin: "http://localhost:3000",
+      origin: `${process.env.APP_URL}`,
       
       optionsSuccessStatus: 200, //
     };
