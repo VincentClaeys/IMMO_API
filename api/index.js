@@ -93,7 +93,7 @@ passport.deserializeUser(async (id, done) => {
 // CORS MIDDLEWARE
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://immoapp-production.up.railway.app/",
     methods: "GET, POST, PUT, DELETE, PATCH",
     credentials: true,
     optionsSuccessStatus: 200,
