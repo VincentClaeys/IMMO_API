@@ -10,7 +10,7 @@ import { registerMiddleware } from "./middleware/index.js";
 
 // CREATE THE EXPRESS APP
 const app = express();
-// const port = 3002;
+const port = 3002;
 
 // INITIALIZE PostgreSQL POOL
 
@@ -866,7 +866,7 @@ app.use(async (req, res, next) => {
 }, authRouter);
 
 app.listen(() => {
-  console.log(`App listening https://immoapi-production.up.railway.app`);
+  console.log(`App listening https://immoapi-production.up.railway.app:${port}`);
 });
 
 // make sure database connection is closed when server crashes
