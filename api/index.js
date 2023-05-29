@@ -865,7 +865,7 @@ app.use(async (req, res, next) => {
   });
 }, authRouter);
 
-app.listen(port, () => {
+app.listen(() => {
   console.log(`App listening https://immoapi-production.up.railway.app`);
 });
 
