@@ -865,8 +865,8 @@ app.use(async (req, res, next) => {
   });
 }, authRouter);
 
-app.listen(() => {
-  console.log(`App listening https://immoapi-production.up.railway.app:${port}`);
+app.listen(port,() => {
+  console.log(`App listening http://localhost:${port}`);
 });
 
 // make sure database connection is closed when server crashes
