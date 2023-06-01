@@ -15,16 +15,19 @@ const port = 3002;
 // INITIALIZE PostgreSQL POOL
 
 const { Pool } = pg;
-const pool = new Pool({
-  user: "postgres",
-  database: "railway",
-  password: "jsNudrA2mhmqUYJCQgQr",
-  port: "5592",
-  host: "containers-us-west-180.railway.app",
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-});
+import dotenv from 'dotenv';
+dotenv.config();
 
+export const dbConfig = {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  connectionString: process.env.DB_URL,
+};
+
+const pool = new Pool(dbConfig);
 pool
   .connect()
   .then(() => {
@@ -41,7 +44,7 @@ app.use(
     saveUninitialized: false,
   })
 );
-
+registerMiddleware(app);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -92,7 +95,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // CORS MIDDLEWARE
-registerMiddleware(app);
+
 
 // ALL THE ROUTES FOR THE LOGIN AND REGISTER
 

@@ -1,6 +1,7 @@
 import cors from "cors";
 import bodyParser from "body-parser";
 
+
 // middleware function to register cors and bodyParser middleware
 const registerMiddleware = (app) => {
   // use CORS middleware
