@@ -11,7 +11,7 @@ import cors from "cors";
 
 // CREATE THE EXPRESS APP
 const app = express();
-const port = 3002;
+const port = 3001;
 
 // INITIALIZE PostgreSQL POOL
 
