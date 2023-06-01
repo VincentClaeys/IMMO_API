@@ -6,8 +6,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
-
-import cors from 'cors';
+import { registerMiddleware } from "./middleware/index.js";
 
 // CREATE THE EXPRESS APP
 const app = express();
@@ -22,7 +21,6 @@ const pool = new Pool({
   password: "jsNudrA2mhmqUYJCQgQr",
   port: "5592",
   host: "containers-us-west-180.railway.app",
-  connectionString: "postgresql://postgres:jsNudrA2mhmqUYJCQgQr@containers-us-west-180.railway.app:5592/railway",
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
 });
@@ -94,13 +92,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // CORS MIDDLEWARE
-app.use(
-  cors({
-    origin: ['https://immoapp-production.up.railway.app'],
-    optionsSuccessStatus: 200,
-  })
-);
-
+registerMiddleware(app);
 
 // ALL THE ROUTES FOR THE LOGIN AND REGISTER
 
@@ -873,9 +865,8 @@ app.use(async (req, res, next) => {
   });
 }, authRouter);
 
-
 app.listen(port,() => {
-  console.log(`App listening https://immoapp-production.up.railway.app:${port}`);
+  console.log(`App listening http://localhost:${port}`);
 });
 
 // make sure database connection is closed when server crashes
