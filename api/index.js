@@ -11,7 +11,7 @@ import cors from "cors";
 
 // CREATE THE EXPRESS APP
 const app = express();
-const port = 3001;
+const port = 3003;
 
 // INITIALIZE PostgreSQL POOL
 
@@ -872,7 +872,7 @@ app.use(async (req, res, next) => {
 }, authRouter);
 
 app.listen(port,() => {
-  console.log(`App listening https://localhost:${port}`);
+  console.log(`App listening https://immoapi-production.up.railway.app:${port}`);
 });
 
 // make sure database connection is closed when server crashes
@@ -883,3 +883,5 @@ const closeServer = () => {
 
 process.on("SIGINT", () => closeServer());
 process.on("SIGTERM", () => closeServer());
+
+
