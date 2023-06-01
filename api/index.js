@@ -6,7 +6,8 @@ import { Strategy as LocalStrategy } from "passport-local";
 
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
-import { registerMiddleware } from "./middleware/index.js";
+
+import cors from 'cors';
 
 // CREATE THE EXPRESS APP
 const app = express();
@@ -93,7 +94,12 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // CORS MIDDLEWARE
-registerMiddleware(app);
+app.use(
+  cors({
+    origin: ['https://immoapp-production.up.railway.app'],
+  })
+);
+
 
 // ALL THE ROUTES FOR THE LOGIN AND REGISTER
 
