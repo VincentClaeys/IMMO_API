@@ -11,7 +11,7 @@ const registerMiddleware = (app) => {
     const corsOptions = {
      
 
-      origin: `${process.env.APP_URL}${process.env.APP_PORT}`,
+      origin: `${process.env.APP_URL}`,
       
       optionsSuccessStatus: 200, //
     };
