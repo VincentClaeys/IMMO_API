@@ -48,7 +48,13 @@ app.use(
   })
 );
 // registerMiddleware(app);
-app.use(cors());
+app.use(cors(
+  {
+    origin:" https://immoapi-production.up.railway.app",
+      
+    optionsSuccessStatus: 200, 
+  }
+));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
