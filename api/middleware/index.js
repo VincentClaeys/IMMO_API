@@ -11,13 +11,14 @@ const registerMiddleware = (app) => {
     const corsOptions = {
      
 
-      origin: `${process.env.APP_URL}`,
+      origin: "http://localhost:3000",
       
       optionsSuccessStatus: 200, //
     };
     app.use(cors(corsOptions));
   } else {
-    // if in development, allow all requests
+    
+    
     app.use(cors());
   }
   
