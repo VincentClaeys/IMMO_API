@@ -3,10 +3,10 @@ import pg from "pg";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import cors from "cors";
+
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
-
+import { registerMiddleware } from "./middleware/index.js";
 
 // CREATE THE EXPRESS APP
 const app = express();
@@ -91,29 +91,7 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-const registerMiddleware = (app) => {
-  // use CORS middleware
-  // if in production, allow requests only from APP_URL
-  if (process.env.ENV === "production") {
-    const corsOptions = {
-      origin: `${process.env.APP_URL}`,
-      optionsSuccessStatus: 200,
-    };
-    app.use(cors(corsOptions));
-  } else {
-    // if in development, allow all requests
-    app.use(cors());
-  }
-
-  // use bodyParser middleware to parse request bodies as JSON
-  app.use(bodyParser.json());
-};
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://immoapp-production.up.railway.app');
-  next();
-});
-
+// CORS MIDDLEWARE
 registerMiddleware(app);
 
 // ALL THE ROUTES FOR THE LOGIN AND REGISTER
