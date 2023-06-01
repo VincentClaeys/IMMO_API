@@ -21,6 +21,7 @@ const pool = new Pool({
   password: "jsNudrA2mhmqUYJCQgQr",
   port: "5592",
   host: "containers-us-west-180.railway.app",
+  connectionString: "postgresql://postgres:jsNudrA2mhmqUYJCQgQr@containers-us-west-180.railway.app:5592/railway",
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
 });
