@@ -97,6 +97,7 @@ passport.deserializeUser(async (id, done) => {
 app.use(
   cors({
     origin: ['https://immoapp-production.up.railway.app'],
+    optionsSuccessStatus: 200,
   })
 );
 
