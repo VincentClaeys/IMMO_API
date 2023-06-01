@@ -3,7 +3,7 @@ import pg from "pg";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-
+import dotenv from 'dotenv';
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
 import { registerMiddleware } from "./middleware/index.js";
@@ -15,19 +15,20 @@ const port = 3002;
 // INITIALIZE PostgreSQL POOL
 
 const { Pool } = pg;
-import dotenv from 'dotenv';
+
+
+
 dotenv.config();
 
-export const dbConfig = {
+export const config = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
   connectionString: process.env.DB_URL,
 };
 
-const pool = new Pool(dbConfig);
+const pool = new Pool(config);
 pool
   .connect()
   .then(() => {
