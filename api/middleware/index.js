@@ -7,7 +7,7 @@ const registerMiddleware = (app) => {
   // if in production, allow requests only from APP_URL
   if (process.env.ENV === "production") {
     const corsOptions = {
-      origin: `${process.env.APP_URL}`,
+      origin: "https://immoapp-production.up.railway.app",
       optionsSuccessStatus: 200,
     };
     app.use(cors(corsOptions));
