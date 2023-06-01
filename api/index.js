@@ -6,8 +6,8 @@ import { Strategy as LocalStrategy } from "passport-local";
 import dotenv from 'dotenv';
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
-// import { registerMiddleware } from "./middleware/index.js";
-import cors from 'cors';
+import { registerMiddleware } from "./middleware/index.js";
+
 
 // CREATE THE EXPRESS APP
 const app = express();
@@ -47,7 +47,7 @@ app.use(
     saveUninitialized: false,
   })
 );
-app.use(cors());
+registerMiddleware(app);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
