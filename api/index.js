@@ -25,6 +25,7 @@ export const config = {
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   connectionString: process.env.DB_URL,
 };
 
@@ -870,7 +871,7 @@ app.use(async (req, res, next) => {
 }, authRouter);
 
 app.listen(port,() => {
-  console.log(`App listening http://localhost:${port}`);
+  console.log(`App listening https://immoapp-production.up.railway.app:${port}`);
 });
 
 // make sure database connection is closed when server crashes
